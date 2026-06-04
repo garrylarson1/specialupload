@@ -1,0 +1,17 @@
+<svg width="372" height="84" viewBox="0 0 372 84" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bell Consulting">
+  <defs>
+    <linearGradient id="bellWmGradL" x1="8" y1="12" x2="76" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5C8AFA"></stop>
+      <stop offset="1" stop-color="#2451E0"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="12" width="60" height="60" rx="15" fill="#0A1633"></rect>
+  <rect x="8.5" y="12.5" width="59" height="59" rx="14.5" stroke="url(#bellWmGradL)" stroke-opacity="0.5"></rect>
+  <line x1="20" y1="56" x2="56" y2="56" stroke="#5C8AFA" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"></line>
+  <path d="M19 56 C 26 56, 27 33, 38 33 C 49 33, 50 56, 57 56" stroke="url(#bellWmGradL)" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
+  <circle cx="38" cy="32" r="3.4" fill="#22CCEE"></circle>
+  <text x="86" y="44" font-family="&#39;Hanken Grotesk&#39;, sans-serif" font-size="27" letter-spacing="-0.6">
+    <tspan font-weight="700" fill="#EEF3FF">Bell</tspan><tspan font-weight="400" fill="#AFC0E6" dx="8">Consulting</tspan>
+  </text>
+  <text x="87" y="64" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9.5" font-weight="500" letter-spacing="3.2" fill="#7C8DB5">GROWTH · STRATEGY</text>
+</svg>

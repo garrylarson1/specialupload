@@ -1,0 +1,16 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bell Consulting mark">
+  <defs>
+    <linearGradient id="bellMarkGrad" x1="16" y1="16" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5C8AFA"></stop>
+      <stop offset="1" stop-color="#2451E0"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="108" height="108" rx="26" fill="#0A1633"></rect>
+  <rect x="6.5" y="6.5" width="107" height="107" rx="25.5" stroke="url(#bellMarkGrad)" stroke-opacity="0.5"></rect>
+  
+  <line x1="26" y1="84" x2="94" y2="84" stroke="#5C8AFA" stroke-width="3" stroke-linecap="round" stroke-opacity="0.45"></line>
+  
+  <path d="M24 84 C 38 84, 40 44, 60 44 C 80 44, 82 84, 96 84" stroke="url(#bellMarkGrad)" stroke-width="6" stroke-linecap="round" fill="none"></path>
+  
+  <circle cx="60" cy="40" r="6" fill="#22CCEE"></circle>
+</svg>

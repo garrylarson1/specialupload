@@ -1,0 +1,364 @@
+/* ============================================================================
+   BELL CONSULTING — Design Foundations
+   Colors, Type, Spacing, Elevation, Motion + Glassmorphism utilities.
+
+   Derived from the AETHER design system, rebranded for Bell Consulting:
+   deep-navy surfaces, aero-blue primary, frosted-glass cards.
+
+   Fonts are Google Fonts substitutes (flagged in README):
+     Hanken Grotesk  ← substitutes "Aeonik" (geometric grotesque)
+     JetBrains Mono  ← substitutes "Söhne Mono"
+   Load order: import this file AFTER the Google Fonts <link> tags.
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   1. TOKENS — spacing, radius, z, motion, type primitives
+---------------------------------------------------------------------------- */
+:root {
+  /* Type families */
+  --font-sans: "Hanken Grotesk", "Aeonik", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Söhne Mono", "IBM Plex Mono", ui-monospace,
+    "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Spacing — 4px base */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0\.5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Radius — tight geometry; full reserved for pills/avatars */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;   /* glass feature cards */
+  --radius-full: 9999px;
+
+  /* Z-index scale */
+  --z-hide: -1;
+  --z-base: 0;
+  --z-docked: 10;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-banner: 1200;
+  --z-overlay: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-toast: 1600;
+  --z-tooltip: 1700;
+
+  /* Motion */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Type scale (rem; root = 16px) */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.75rem;
+  --text-6xl: 4.5rem;
+  --text-7xl: 6rem;
+
+  /* Line-height + tracking */
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.06em;
+  --tracking-widest: 0.12em;
+
+  /* Container + gutter */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1440px;
+  --gutter: clamp(1rem, 5vw, 6rem);
+}
+
+/* ----------------------------------------------------------------------------
+   2. COLOR — primitive ramps (reference only; consume semantic tokens)
+---------------------------------------------------------------------------- */
+:root {
+  /* Neutral — cool slate */
+  --neutral-50:  #F8FAFC;  --neutral-100: #F1F5F9; --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;  --neutral-400: #94A3B8; --neutral-500: #64748B;
+  --neutral-600: #475569;  --neutral-700: #334155; --neutral-800: #1E293B;
+  --neutral-900: #0F172A;  --neutral-950: #020617;
+
+  /* Primary — aero blue (Bell signature) */
+  --primary-50:  #EEF4FF; --primary-100: #D9E6FF; --primary-200: #BCD2FF;
+  --primary-300: #8EB3FF; --primary-400: #5C8AFA; --primary-500: #3B6CF6;
+  --primary-600: #2451E0; --primary-700: #1C3FC4; --primary-800: #1D38A0;
+  --primary-900: #1E347E; --primary-950: #16204D;
+
+  /* Secondary — signal cyan */
+  --secondary-50:  #ECFEFF; --secondary-100: #CFF9FE; --secondary-200: #A5F0FC;
+  --secondary-300: #67E2F9; --secondary-400: #22CCEE; --secondary-500: #06AED4;
+  --secondary-600: #0890B2; --secondary-700: #0E7490; --secondary-800: #155E75;
+  --secondary-900: #164E63; --secondary-950: #083344;
+
+  /* Status */
+  --success-500: #10B981; --success-600: #059669; --success-700: #047857;
+  --warning-500: #F59E0B; --warning-600: #D97706; --warning-700: #B45309;
+  --error-500:   #EF4444; --error-600:   #DC2626; --error-700:   #B91C1C;
+
+  /* Brand gradient endpoints (deep navy field) */
+  --bell-navy-deep: #050B1E;
+  --bell-navy:      #0A1633;
+  --bell-azure:     #3B6CF6;
+}
+
+/* ----------------------------------------------------------------------------
+   3. SEMANTIC TOKENS — light + dark. Components consume ONLY these.
+   Bell biases to dark mode as the hero surface.
+---------------------------------------------------------------------------- */
+:root,
+[data-theme="light"] {
+  --color-bg: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+  --color-text-inverted: #FFFFFF;
+  --color-primary: #2451E0;
+  --color-primary-hover: #1C3FC4;
+  --color-primary-active: #1D38A0;
+  --color-primary-subtle: #EEF4FF;
+  --color-primary-fg: #FFFFFF;
+  --color-secondary: #0890B2;
+  --color-success: #059669; --color-success-subtle: #ECFDF5; --color-success-fg: #FFFFFF;
+  --color-warning: #D97706; --color-warning-subtle: #FFFBEB; --color-warning-fg: #FFFFFF;
+  --color-error: #DC2626;   --color-error-subtle: #FEF2F2;   --color-error-fg: #FFFFFF;
+  --color-focus-ring: rgb(36 81 224 / 0.55);
+  --color-scrim: rgb(2 6 23 / 0.45);
+
+  /* Glass tokens (light) */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --glass-blur: 16px;
+  --glass-shadow: 0 12px 40px -12px rgb(2 6 23 / 0.18);
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px 0 rgb(2 6 23 / 0.06);
+  --shadow-sm: 0 1px 3px 0 rgb(2 6 23 / 0.08), 0 1px 2px -1px rgb(2 6 23 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(2 6 23 / 0.10);
+  --shadow-lg: 0 12px 28px -6px rgb(2 6 23 / 0.14);
+  --shadow-xl: 0 24px 48px -12px rgb(2 6 23 / 0.18);
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
+  color-scheme: light;
+}
+
+[data-theme="dark"],
+.dark {
+  --color-bg: #050B1E;            /* deep navy field */
+  --color-surface: #0A1633;       /* navy panel */
+  --color-surface-raised: #122046;
+  --color-surface-sunken: #050B1E;
+  --color-border: #1B2A52;
+  --color-border-strong: #2A3D6E;
+  --color-text-primary: #EEF3FF;
+  --color-text-secondary: #AFC0E6;
+  --color-text-muted: #7C8DB5;
+  --color-text-inverted: #050B1E;
+  --color-primary: #5C8AFA;
+  --color-primary-hover: #3B6CF6;
+  --color-primary-active: #2451E0;
+  --color-primary-subtle: #142353;
+  --color-primary-fg: #050B1E;
+  --color-secondary: #22CCEE;
+  --color-success: #10B981; --color-success-subtle: #06301F; --color-success-fg: #022C22;
+  --color-warning: #F59E0B; --color-warning-subtle: #3A2A06; --color-warning-fg: #451A03;
+  --color-error: #EF4444;   --color-error-subtle: #3A1414;   --color-error-fg: #450A0A;
+  --color-focus-ring: rgb(92 138 250 / 0.65);
+  --color-scrim: rgb(2 6 23 / 0.70);
+
+  /* Glass tokens (dark) — the hero surface treatment */
+  --glass-bg: rgba(28, 47, 95, 0.38);
+  --glass-bg-strong: rgba(33, 54, 108, 0.55);
+  --glass-border: rgba(143, 176, 255, 0.18);
+  --glass-highlight: rgba(173, 198, 255, 0.35);
+  --glass-blur: 18px;
+  --glass-shadow: 0 24px 60px -18px rgb(2 6 23 / 0.65);
+
+  /* Elevation — dark leans on borders */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.40);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.50);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 12px 28px -6px rgb(0 0 0 / 0.60);
+  --shadow-xl: 0 24px 48px -12px rgb(0 0 0 / 0.65);
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
+  color-scheme: dark;
+}
+
+/* ----------------------------------------------------------------------------
+   4. SEMANTIC TYPE — h1..h6, body, eyebrow
+---------------------------------------------------------------------------- */
+h1, .h1 {
+  font: var(--font-weight-medium) var(--text-4xl)/var(--leading-tight) var(--font-sans);
+  letter-spacing: var(--tracking-tight);
+}
+h2, .h2 {
+  font: var(--font-weight-semibold) var(--text-3xl)/var(--leading-tight) var(--font-sans);
+  letter-spacing: var(--tracking-tight);
+}
+h3, .h3 {
+  font: var(--font-weight-semibold) var(--text-2xl)/var(--leading-snug) var(--font-sans);
+}
+h4, .h4 {
+  font: var(--font-weight-semibold) var(--text-xl)/var(--leading-snug) var(--font-sans);
+  letter-spacing: var(--tracking-tight);
+}
+.display {
+  font: var(--font-weight-light) var(--text-6xl)/var(--leading-none) var(--font-sans);
+  letter-spacing: var(--tracking-tighter);
+}
+.lead {
+  font: var(--font-weight-regular) var(--text-md)/var(--leading-relaxed) var(--font-sans);
+  color: var(--color-text-secondary);
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   5. GLASSMORPHISM — frosted glass card system (Bell signature)
+   .glass        base frosted panel
+   .glass-strong heavier fill (use over busy imagery)
+   .glass-hairline adds the top inner highlight line
+---------------------------------------------------------------------------- */
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--glass-shadow);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+}
+/* Inner top highlight — the "lit edge" of the glass */
+.glass-hairline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding-top: 1px;
+  background: linear-gradient(
+    180deg,
+    var(--glass-highlight) 0%,
+    transparent 28%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* The deep-navy aurora field glass sits on */
+.bell-field {
+  background:
+    radial-gradient(120% 100% at 12% 0%, rgba(59,108,246,0.22) 0%, transparent 45%),
+    radial-gradient(120% 120% at 92% 18%, rgba(34,204,238,0.14) 0%, transparent 42%),
+    radial-gradient(100% 120% at 50% 110%, rgba(36,81,224,0.18) 0%, transparent 50%),
+    var(--color-bg);
+}
+
+/* ----------------------------------------------------------------------------
+   6. RESET + BASE
+---------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+body {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, svg, video, canvas { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+::selection { background: var(--color-primary-subtle); color: var(--color-text-primary); }
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Focus — never removed */
+:where(a, button, input, select, textarea, [tabindex], [role="button"],
+       [role="tab"], [role="menuitem"], summary):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+.focus-ring:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
